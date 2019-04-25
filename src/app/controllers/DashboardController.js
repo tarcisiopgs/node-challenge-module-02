@@ -33,7 +33,7 @@ class DashboardController {
       })
 
       await appointments.map(async (v, i) => {
-        appointments[i].dateFormated = await moment(v.date).format('DD/MM/YYYY')
+        appointments[i].dateFormated = await moment(v.date).format('HH:mm')
       })
       return res.render('dashboard', { appointments })
     }
