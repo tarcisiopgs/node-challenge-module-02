@@ -1,6 +1,6 @@
 const express = require('express')
 const session = require('express-session')
-var LokiStore = require('connect-loki')(session);
+const LokiStore = require('connect-loki')(session)
 const nunjucks = require('nunjucks')
 const path = require('path')
 const flash = require('connect-flash')
