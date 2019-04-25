@@ -8,9 +8,9 @@ class AppointmentController {
   }
 
   async store (req, res) {
-    const {id} = req.session.user
-    const {provider} = req.params
-    const {date} = req.body
+    const { id } = req.session.user
+    const { provider } = req.params
+    const { date } = req.body
 
     await Appointment.create({
       user_id: id,

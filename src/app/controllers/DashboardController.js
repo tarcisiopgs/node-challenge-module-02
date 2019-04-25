@@ -15,15 +15,21 @@ class DashboardController {
           provider_id: id,
           date: {
             [Op.between]: [
-              moment().startOf('day').format(),
-              moment().endOf('day').format()
+              moment()
+                .startOf('day')
+                .format(),
+              moment()
+                .endOf('day')
+                .format()
             ]
           }
         },
-        include: [{
-          model: User,
-          foreignKey: 'user_id'
-        }]
+        include: [
+          {
+            model: User,
+            foreignKey: 'user_id'
+          }
+        ]
       })
 
       await appointments.map(async (v, i) => {
