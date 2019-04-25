@@ -3,33 +3,21 @@
 {% block body %}
   <div class="content">
     <strong>Olá, {{ user.name }}</strong>
-    {% if user.provider %}
-      <p>Visualize seus agendamentos para o dia de hoje:</p>
-    {% else %}
-      <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
-    {% endif %}
+    <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
     <ul class="providers">
-      {% if providers %}
-        {% for provider in providers %}
-          <li class="provider">
-            <div>
-              <img src="/files/{{ provider.avatar }}" alt="{{ provider.name }}">
-              <strong>{{ provider.name }}</strong>
-            </div>
-            <a href="/app/appointments/new/{{ provider.id }}">+</a>
-          </li>
-        {% endfor %}
-      {% else %}
-        {% for appointment in appointments %}
-          <li class="provider">
-            <div>
-              <img src="/files/{{ appointment.User.avatar }}" alt="{{ appointment.User.name }}">
-              <strong>{{ appointment.User.name }} ({{ appointment.dateFormated }})</strong>
-            </div>
-          </li>
-        {% endfor %}
-      {% endif %}
+    {% for provider in providers %}
+    <li class="provider">
+    <div>
+    <img src="/files/{{ provider.avatar }}" alt="{{ provider.name }}">
+    <strong>{{ provider.name }}</strong>
+    </div>
+    <a href="/app/appointments/new/{{ provider.id }}">+</a>
+    </li>
+    {% endfor %}
     </ul>
+    {% if (user.provider === true) %}
+      <a href="/app/schedule">Meus agendamentos</a>
+    {% endif %}
     <a href="/app/logout" class="logout">Sair</a>
   </div>
 {% endblock %}
